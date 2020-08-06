@@ -6,13 +6,16 @@ function mergeArrays(a, b, c) {
             result.push(value);
             return result;
         }
-        result.forEach((item, index) => {
-            if (!result.includes(value) && item >= value) {
-                result.splice(index, 0, value);
-            } else if (index + 1 === result.length) {
+
+        for (let i = 0; i < result.length; i++) {
+            if (result[i] >= value) {
+                result.splice(i, 0, value);
+                break;
+            } else if (i === result.length - 1) {
                 result.push(value);
+                break;
             }
-        })
+        }
         return result;
     }, []);
 }
